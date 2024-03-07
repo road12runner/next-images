@@ -69,7 +69,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
   }
 }
 
-export async function updateCredits(userId: string, creditFee: string) {
+export async function updateCredits(userId: string, creditFee: number) {
   try {
     await connectToDatabase();
     const updateUserCredits  =  await User.findOneAndUpdate(
@@ -82,6 +82,26 @@ export async function updateCredits(userId: string, creditFee: string) {
     if (!updateUserCredits) {
       throw new Error("User credits update failed");
     }
+  } catch (e) {
+    handleError(e);
+  }
+}
+
+export async function useCredits(userId: string, creditFee: number)  {
+  try {
+    await connectToDatabase();
+    const updatedUserCredits = await User.findOneAndUpdate(
+        {_id: userId},
+      {$inc: {credits: creditFee}},
+      {new: true}
+    )
+
+    if (!updatedUserCredits) {
+      throw new Error("User creidts update failed");
+    }
+
+    return JSON.parse(JSON.stringify(updatedUserCredits));
+
   } catch (e) {
     handleError(e);
   }

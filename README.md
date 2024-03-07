@@ -41,6 +41,12 @@ npx shadcn-ui@latest init
 
 npx shadcn-ui@latest add button
 
+npx shadcn-ui@latest add form
+
+npx shadcn-ui@latest add select
+
+npx shadcn-ui@latest add toast
+
 
 mongodb
 npm install mongodb
@@ -48,5 +54,9 @@ mongodb+srv://dmitrypanferov:<password>@cluster0.s1rd9os.mongodb.net/?retryWrite
 
 dmitrypanferov
 gCEupRye827v7TYz
+
+
+stripe
+YtE_Ny#wm8999Y9
 
 
